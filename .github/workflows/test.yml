@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [ubuntu-latest]
-        php-versions: ['7.4', '8.0', '8.1']
+        php-versions: ['7.1', '8.2']
 
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
 
@@ -44,7 +44,7 @@ jobs:
             ${{ runner.os }}-php-
 
       - name: Install dependencies
-        run: composer install --no-progress
+        run: composer install --prefer-dist --no-progress
 
       - name: Download production IDPs metadata
         run: bin/download_idp_metadata.php example/idp_metadata
