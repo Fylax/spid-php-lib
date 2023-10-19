@@ -44,13 +44,16 @@ jobs:
             ${{ runner.os }}-php-
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
+        run: composer install --no-progress
 
       - name: Download production IDPs metadata
         run: bin/download_idp_metadata.php example/idp_metadata
 
       - name: Coding standard
-        run: find . | grep 'php$' | grep -v vendor | grep -v tests | xargs ./vendor/bin/phpcs --standard=PSR2
+        run: composer code-style
+
+      - name: Coding quality
+        run: composer static-analysis
 
       - name: Run tests
         run: ./vendor/bin/phpunit --stderr --testdox tests
