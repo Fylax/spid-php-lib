@@ -23,7 +23,7 @@
         "ext-zlib": "*",
         "robrichards/xmlseclibs": "^3.0",
         "php": "^7.1 || ^8.0",
-        "psr/log": "^2.0 || ^3.0"
+        "psr/log": "1.1.4 || ^3.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "*",
