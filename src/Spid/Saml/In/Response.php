@@ -20,7 +20,7 @@ class Response implements ResponseInterface
     /**
      * @throws SpidException
      */
-    public function validate($xml, $hasAssertion): bool
+    public function validate(DOMDocument $xml, $hasAssertion): bool
     {
         $logger = $this->saml->getLogger();
 

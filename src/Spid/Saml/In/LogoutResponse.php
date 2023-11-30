@@ -2,6 +2,7 @@
 
 namespace Italia\Spid\Spid\Saml\In;
 
+use DOMDocument;
 use Exception;
 use Italia\Spid\Spid\Interfaces\ResponseInterface;
 
@@ -10,7 +11,7 @@ class LogoutResponse implements ResponseInterface
     /**
      * @throws Exception
      */
-    public function validate($xml, $hasAssertion): bool
+    public function validate(DOMDocument $xml, $hasAssertion): bool
     {
         $root = $xml->getElementsByTagName('LogoutResponse')->item(0);
 
