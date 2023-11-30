@@ -20,7 +20,7 @@ class Response implements ResponseInterface
     /**
      * @throws SpidException
      */
-    public function validate($xml, $hasAssertion): bool
+    public function validate(DOMDocument $xml, $hasAssertion): bool
     {
         $logger = $this->saml->getLogger();
 
@@ -79,7 +79,10 @@ class Response implements ResponseInterface
                 "Invalid Issuer attribute, expected {$_SESSION['idpEntityId']} but received " .
                 $issuer->item(0)->nodeValue
             );
-        } elseif ($issuer->item(0)->getAttribute('Format') != $samlUrn . 'nameid-format:entity') {
+        } elseif (
+            $issuer->item(0)->hasAttribute('Format')
+            && $issuer->item(0)->getAttribute('Format') != $samlUrn . 'nameid-format:entity'
+        ) {
             $logger->logAndThrow(
                 $xml,
                 "Invalid Issuer attribute, expected '{$samlUrn}nameid-format:entity' but received " .
