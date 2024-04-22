@@ -68,7 +68,8 @@ class Idp implements IdpInterface
         $metadata['idpSLO'] = $idpSLO;
         $excludedIdps =
             (strpos($metadata['idpEntityId'], 'lepida') != false) ||
-            (strpos($metadata['idpEntityId'], 'tim') != false);
+            (strpos($metadata['idpEntityId'], 'tim') != false) ||
+            (strpos($metadata['idpEntityId'], 'posteid') != false);
 
         if ($excludedIdps) {
             $metadata['idpCertValue'] = self::formatCert($xml->xpath('//ds:X509Certificate')[0]->__toString());
